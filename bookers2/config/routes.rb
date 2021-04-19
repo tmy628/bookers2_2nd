@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   resources :users
 
+  get 'home/about' => 'homes#show', as: 'about'
+
 end
