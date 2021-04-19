@@ -26,7 +26,7 @@
 <h1>Book</h1>
 
 <% @books.each do |f| %>
-  <%= attachment_image_tag f.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  <%= link_to attachment_image_tag(f.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"),user_path(f.user.id) %>
   <%= link_to f.title, book_path(f.id) %>
   <%= f.body %><br>
 <% end %>
