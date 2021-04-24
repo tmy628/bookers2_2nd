@@ -1,3 +1,18 @@
+<!--User info/New book 共通ページ-->
+<!--部分テンプレートが呼び出されたときに、Viewから渡される変数が使えるように変更する → この変数には、ローカル変数を使う-->
+<!--@（アットマーク）を外す-->
+<% if book.errors.any? %>
+  <div class="error_explanation">
+    <h3><%= book.errors.count %>errors prohibited this book from being saved:</h3>
+      <% book.errors.full_messages.each do |message| %>
+        <ul>
+          <li><%= message %></li>
+        </ul>
+      <% end %>
+  </div>
+<% end %>
+<!--エラーメッセージを表示-->
+
 <h2>User info</h2>
 
 <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>

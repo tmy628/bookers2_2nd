@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  # ログイン済ユーザーのみにアクセスを許可する
+  # コントローラーの先頭に記載することで、そこで行われる処理はログインユーザーによってのみ実行可能となる
 
   def index
     @user = current_user
@@ -19,9 +22,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) # 何を更新するのかを指定
     @user.update(user_params)
-    redirect_to user_path(@user.id)
+
+    if @user.update(user_params) # もし更新ができたら
+      flash[:success] = "User was successfully updated."
+      # サクセスメッセージを表示
+      redirect_to user_path(@user.id) # ユーザー画面へ遷移
+
+    else # でなければ
+      render action: :edit # editへ遷移
+    end
   end
 
   def create

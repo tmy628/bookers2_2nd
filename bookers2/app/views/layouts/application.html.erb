@@ -52,6 +52,14 @@
         </div>
       </div>
     </nav>
+
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <!--ログイン・ログアウト・サインイン時にサクセスメッセージを表示-->
+
     <%= yield %>
     <div class="container mt-5">
       <div class="row">

@@ -1,3 +1,16 @@
+<!--Editing Book 編集ページ-->
+<% if @book.errors.any? %>
+  <div class="error_explanation">
+    <h3><%= @book.errors.count %>errors prohibited this book from being saved:</h3>
+      <% @book.errors.full_messages.each do |message| %>
+        <ul>
+          <li><%= message %></li>
+        </ul>
+      <% end %>
+  </div>
+<% end %>
+<!--エラーメッセージを表示-->
+
 <div class="container">
 <%= form_with model:@book, local:true do |f| %>
   <div class="row">

@@ -1,4 +1,11 @@
 <!--Book detail 投稿詳細ページ-->
+<% if flash[:success] %>
+  <div class="flash">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+<!--投稿データの新規投稿・更新時にサクセスメッセージを表示-->
+
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
