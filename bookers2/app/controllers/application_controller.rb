@@ -11,6 +11,4 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
   end
-  # devise.rbの記述変更により、devise側で追加されるストロングパラメータがnameとpasswordになるので、application_controller.rbではemailを追加する必要がある
-
 end

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @book = Book.new
     @books = @user.books
-    #ユーザー（自分）に関連している本の投稿が羅列されるように
+    # ユーザー（自分）に関連している本の投稿が羅列されるように
   end
 
   def update
@@ -41,15 +41,15 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
-  def correct_user# URLを入力しても、他のユーザの編集画面には遷移できないように設定
+  def correct_user # URLを入力しても、他のユーザの編集画面には遷移できないように設定
     @user = User.find(params[:id])
     if current_user != @user
-       redirect_to user_path(current_user.id)
+      redirect_to user_path(current_user.id)
     end
   end
-
 end
