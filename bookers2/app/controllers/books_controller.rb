@@ -66,14 +66,6 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
-  def correct_user # URLを入力しても、他のユーザが投稿した投稿の編集画面、および他のユーザの編集画面には遷移できないように設定
-    @book = Book.find(params[:id])
-    @user = @book.user
-    if current_user != @user
-      redirect_to books_path
-    end
-  end
-
   private
   def book_params
     params.require(:book).permit(:title, :body)
@@ -81,6 +73,14 @@ class BooksController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
+  end
+
+  def correct_user # URLを入力しても、他のユーザが投稿した投稿の編集画面には遷移できないように設定
+    @book = Book.find(params[:id])
+    @user = @book.user
+    if current_user != @user
+      redirect_to books_path
+    end
   end
 
 end
