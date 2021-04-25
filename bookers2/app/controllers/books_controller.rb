@@ -9,7 +9,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)  # 何を新しく保存するのかを指定
+    @book = Book.new(book_params) # 何を新しく保存するのかを指定
     @book.user_id = current_user.id # 誰が投稿したのかを指定
     @book.save
 
@@ -67,6 +67,7 @@ class BooksController < ApplicationController
   end
 
   private
+
   def book_params
     params.require(:book).permit(:title, :body)
   end
@@ -82,5 +83,4 @@ class BooksController < ApplicationController
       redirect_to books_path
     end
   end
-
 end
